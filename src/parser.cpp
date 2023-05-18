@@ -86,6 +86,11 @@ ASTNode *Parser::prim() {
         // Implement Variable class and uncomment this line
         node = new Variable(lexer_.get_name());
         break;
+    case Token::Lbrace:
+        node = expr();
+        break;
+    case Token::Rbrace:
+        break;
     default:
         break;
     }
