@@ -22,11 +22,14 @@ class ASTNode {
     std::string repr() const { return repr_; }
 
     void print(std::ostream &out) const;
+    virtual int value() const = 0;
 
   private:
     void inner_print(std::ostream &out, size_t indent) const;
 
     std::string repr_;
+  
+  protected:
     ASTNode *lhs_;
     ASTNode *rhs_;
 };

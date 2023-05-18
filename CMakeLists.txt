@@ -5,11 +5,20 @@ project(calc CXX)
 add_executable(calc
     src/lexer.cpp
     src/parser.cpp
-    src/astnode.cpp
     src/main.cpp
+    src/node/astnode.cpp
+    src/node/number.cpp
+    src/node/variable.cpp
+    src/node/add.cpp
+    src/node/div.cpp
+    src/node/mul.cpp
+    src/node/sub.cpp
 )
 
-target_include_directories(calc PRIVATE include)
+target_include_directories(calc PRIVATE
+    include
+    include/node
+    )
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR
     CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

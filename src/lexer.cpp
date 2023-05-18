@@ -5,6 +5,18 @@
 
 #include <cctype>
 
+int Lexer::get_number() const { 
+    return number_; 
+}
+
+std::string Lexer::get_operator() const {
+    return operator_;
+}
+
+std::string Lexer::get_name() const {
+    return name_;
+}
+
 Lexer::Token Lexer::next_token() {
     for (;;) {
         switch (state_) {
