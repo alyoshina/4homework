@@ -7,6 +7,8 @@
 class Sub : public ASTNode {
   public:
     Sub(const std::string &repr, ASTNode *lhs, ASTNode *rhs);
+
+    virtual ~Sub();
     
     virtual int value() const;
 };

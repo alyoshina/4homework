@@ -25,6 +25,12 @@ ASTNode *Parser::expr() {
     ASTNode *root = term();
     for (;;) {
         switch (tok_) {
+        case Token::Error: {
+            if (root) {
+                delete root;
+            }
+            return nullptr;
+        }
         case Token::Operator: {
             std::string op = lexer_.get_operator();
             switch (op.front()) {
@@ -52,6 +58,12 @@ ASTNode *Parser::term() {
     ASTNode *root = prim();
     for (;;) {
         switch (tok_) {
+        case Token::Error: {
+            if (root) {
+                delete root;
+            }
+            return nullptr;
+        }
         case Token::Operator: {
             std::string op = lexer_.get_operator();
             switch (op.front()) {
@@ -79,6 +91,9 @@ ASTNode *Parser::prim() {
     ASTNode *node = nullptr;
     next_token();
     switch (tok_) {
+    case Token::Error: {
+        return nullptr;
+    }
     case Token::Number:
         node = new Number(lexer_.get_number());
         break;

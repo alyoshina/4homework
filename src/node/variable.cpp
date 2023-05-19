@@ -3,3 +3,5 @@
 Variable::Variable(const std::string &val)
         : ASTNode(val)
         {}
+
+Variable::~Variable() {}

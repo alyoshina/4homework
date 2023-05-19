@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
 
     int result = 0;
     ASTNode *ast = parser.parse();
+
     if (ast) {
         if (only_res) {
             result = ast->value();
@@ -38,7 +39,14 @@ int main(int argc, char** argv) {
         } else {
             ast->print(std::cout);
         } 
+    } else {
+        if (lexer.is_error_token()) {
+            std::cout << "Error in position " << lexer.get_position() << ": " << lexer.get_error_str() << std::endl;
+        }
     }
+
+    delete ast;
+
 
     return 0;
 }

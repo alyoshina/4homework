@@ -8,6 +8,8 @@ class Number : public ASTNode {
   public:
     Number(int val);
 
+    virtual ~Number();
+
     virtual int value() const;
 
   private:
